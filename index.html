@@ -2,38 +2,42 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Заявка в модеры sashawaify</title>
 <meta name="description" content="Анкета для тех, кто хочет стать модератором канала sashawaify на Twitch.">
-<meta name="theme-color" content="#ffd3e6">
+<meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Заявка в модеры sashawaify">
-<meta property="og:description" content="Хочешь зелёный меч в чате Саши? Заполни анкету.">
+<meta property="og:description" content="Кастинг на зелёный меч в чате Саши. Заполни анкету.">
 <meta property="og:url" content="https://sashawaify.aliveenjoyer.art/">
 <meta property="og:image" content="https://sashawaify.aliveenjoyer.art/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Shantell+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,600;1,700&family=Montserrat:wght@800&family=Shantell+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/page.css">
+<noscript><style>#title, #intro .pre, #intro .bow, #intro .lead { opacity: 1 !important; } #intro .nav { display: none; } .bar { transform: none !important; }</style></noscript>
 </head>
 <body>
 
 <svg class="defs" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="gBow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8fc0"/><stop offset="1" stop-color="#e23d8b"/></linearGradient>
+    <linearGradient id="gBow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9cc8"/><stop offset="1" stop-color="#e23d8b"/></linearGradient>
     <linearGradient id="gChrome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#d9c3cf"/><stop offset=".6" stop-color="#8d7482"/><stop offset="1" stop-color="#f4dbe6"/></linearGradient>
+    <pattern id="pStripe" width="46" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-24)">
+      <rect width="23" height="40" fill="#fff"/><rect x="23" width="23" height="40" fill="#e23d8b"/>
+    </pattern>
   </defs>
   <symbol id="i-bow" viewBox="0 0 64 50">
     <path d="M29 27c-5 6-9 13-11 20l9-3 4-13zM35 27c5 6 9 13 11 20l-9-3-4-13z" fill="#c92a78"/>
     <path d="M30 24C23 9 7 4 4 15c-3 10 2 23 10 23 8 0 14-8 16-14z" fill="url(#gBow)" stroke="#b3246a" stroke-width="2" stroke-linejoin="round"/>
     <path d="M34 24c7-15 23-20 26-9 3 10-2 23-10 23-8 0-14-8-16-14z" fill="url(#gBow)" stroke="#b3246a" stroke-width="2" stroke-linejoin="round"/>
     <path d="M10 16c2-5 8-4 13 1M54 16c-2-5-8-4-13 1" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2" stroke-linecap="round"/>
-    <rect x="26" y="16" width="12" height="16" rx="5" fill="#ff8fc0" stroke="#b3246a" stroke-width="2"/>
+    <rect x="26" y="16" width="12" height="16" rx="5" fill="#ff9cc8" stroke="#b3246a" stroke-width="2"/>
   </symbol>
   <symbol id="i-heart" viewBox="0 0 24 24">
-    <path d="M12 21s-7.6-4.7-10.1-9.4C.3 8.400 2 4.500 5.800 4.100c2.400-.3 4.600.9 6.200 3 1.600-2.100 3.800-3.300 6.200-3 3.800.4 5.500 4.300 3.900 7.500C19.600 16.300 12 21 12 21z" fill="currentColor"/>
+    <path d="M12 21s-7.600-4.700-10.100-9.400C.3 8.400 2 4.500 5.800 4.100c2.400-.3 4.600.9 6.200 3 1.600-2.100 3.800-3.300 6.200-3 3.800.4 5.500 4.300 3.900 7.500C19.600 16.300 12 21 12 21z" fill="currentColor"/>
   </symbol>
   <symbol id="i-spark" viewBox="0 0 24 24">
     <path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" fill="currentColor"/>
@@ -50,66 +54,54 @@
   </symbol>
 </svg>
 
-<div class="dock" id="dock" aria-hidden="true">
-  <div class="goal small"><div class="fill" data-fill></div><span data-count>0 / 0</span></div>
-</div>
+<div class="glow" aria-hidden="true"></div>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<svg class="float f1" aria-hidden="true"><use href="#i-star"/></svg>
+<svg class="float f2" aria-hidden="true"><use href="#i-star"/></svg>
+<svg class="float f3" aria-hidden="true"><use href="#i-star"/></svg>
+<div class="cast" id="cast" aria-hidden="true"></div>
+<div class="peek" id="peek" aria-hidden="true"><div class="peek-head" id="peekHead"></div></div>
 
-<header class="scene">
-  <div class="sky" id="sky" aria-hidden="true"></div>
-  <svg class="deco star s1" aria-hidden="true"><use href="#i-star"/></svg>
-  <svg class="deco star s2" aria-hidden="true"><use href="#i-star"/></svg>
-  <svg class="deco star s3" aria-hidden="true"><use href="#i-star"/></svg>
-  <div class="scene-in">
-    <p class="chan"><a href="https://www.twitch.tv/sashawaify" target="_blank" rel="noopener">twitch.tv/sashawaify</a></p>
-    <h1>
-      <svg class="bow" aria-hidden="true"><use href="#i-bow"/></svg>
-      <span>Заявка в&nbsp;модеры</span>
-      <svg class="bow" aria-hidden="true"><use href="#i-bow"/></svg>
-    </h1>
-    <p class="lead">Хочешь зелёный меч в моём чате? Ответь на вопросы честно и&nbsp;своими словами. Читаю каждую анкету.</p>
-    <div class="goalbox" id="goalbox">
-      <p class="goal-title">анкета заполнена <span aria-hidden="true">·˚+♡</span></p>
-      <div class="goal" role="progressbar" aria-label="Сколько вопросов уже с ответом" aria-valuemin="0" aria-valuenow="0" id="goal">
-        <div class="fill" data-fill></div><span data-count>0 / 0</span>
-      </div>
-    </div>
-  </div>
+<header class="bar bar-top">
+  <a class="chan" href="https://www.twitch.tv/sashawaify" target="_blank" rel="noopener">twitch.tv/sashawaify</a>
+  <p class="slate" id="slate" aria-live="polite">кастинг модеров</p>
 </header>
 
-<main>
-  <form id="form" novalidate autocomplete="off">
-    <div id="sections"></div>
-
-    <section class="sheet last-sheet">
-      <label class="agree" id="agreeBox">
-        <input type="checkbox" id="agree">
-        <span class="box" aria-hidden="true"><svg><use href="#i-heart"/></svg></span>
-        <span>Понимаю, что модер — это порядок в чате, а не только зелёный меч у ника</span>
-      </label>
-      <p class="miss-note" id="agreeMiss" hidden>Без этой галочки анкету не отправить</p>
-      <input class="hp" type="text" name="website" id="website" tabindex="-1" aria-hidden="true" autocomplete="off">
-      <p class="formmsg" id="formmsg" role="alert" hidden></p>
-      <button class="send" id="send" type="submit">
-        <svg aria-hidden="true"><use href="#i-bow"/></svg><span id="sendText">Отправить анкету</span>
-      </button>
-      <p class="fine">Ответы увидят только Саша и её команда. Черновик хранится в твоём браузере, пока не отправишь.</p>
-    </section>
-  </form>
-
-  <section class="sheet done" id="done" hidden tabindex="-1">
-    <svg class="done-paw" aria-hidden="true"><use href="#i-paw"/></svg>
-    <h2>Анкета у Саши</h2>
-    <p>Если подойдёшь, тебе напишут туда, где ты оставил контакт: <b id="doneContact"></b>.</p>
-    <p>А пока заходи на стрим и веди себя так, будто меч уже у тебя.</p>
-    <a class="send as-link" href="https://www.twitch.tv/sashawaify" target="_blank" rel="noopener">Открыть канал sashawaify</a>
+<main id="stage">
+  <section class="shot card" id="intro">
+    <div class="shot-in">
+      <p class="pre">sashawaify представляет</p>
+      <svg class="bow" aria-hidden="true"><use href="#i-bow"/></svg>
+      <h1 id="title">Заявка в&nbsp;модеры</h1>
+      <p class="lead">Кастинг на зелёный меч в моём чате. <span id="qcount">33 вопроса</span>, минут десять. Отвечай честно и&nbsp;своими словами: читаю каждую анкету.</p>
+      <div class="nav center">
+        <button class="btn big" id="start" type="button">Начать</button>
+        <button class="ghost" id="fromTop" type="button" hidden>С первого вопроса</button>
+      </div>
+      <noscript><p class="lead">Анкете нужен JavaScript: включи его в браузере и обнови страницу.</p></noscript>
+    </div>
   </section>
 </main>
 
-<footer>
-  <p>Страницу сделал <a href="https://aliveenjoyer.art/" target="_blank" rel="noopener">aliveenjoyer</a> для <a href="https://www.twitch.tv/sashawaify" target="_blank" rel="noopener">sashawaify</a></p>
+<footer class="bar bar-bot">
+  <div class="goalbox">
+    <p class="goal-title">анкета заполнена <span aria-hidden="true">·˚+♡</span></p>
+    <div class="goalwrap">
+      <div class="goal" id="goal" role="progressbar" aria-label="Сколько вопросов уже с ответом" aria-valuemin="0" aria-valuenow="0">
+        <div class="fill" id="fill"></div><span id="count">0 / 0</span>
+      </div>
+      <div class="rider" id="rider" aria-hidden="true"></div>
+    </div>
+  </div>
 </footer>
 
+<div class="peek-paws" id="peekPaws" aria-hidden="true"></div>
+<input class="hp" type="text" name="website" id="website" tabindex="-1" aria-hidden="true" autocomplete="off">
+<div class="leak" id="leak" aria-hidden="true"></div>
+<div class="flash" id="flash" aria-hidden="true"></div>
 <div class="burst" id="burst" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <script type="module" src="js/app.js"></script>
 <script src="https://aliveenjoyer.art/stat.js" data-page="sasha" defer></script>
